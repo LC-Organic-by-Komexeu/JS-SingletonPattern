@@ -27,6 +27,7 @@
         },
         onClick: undefined,
         onInitComplete: undefined,
+        onAChange: undefined,
 
         store: undefined
     };
@@ -59,7 +60,7 @@
             o.target.append(selA)
                     .find('.selA')
                     .change(function(){
-                        o.opt.store.a = this.value
+                        o.target.trigger('onAChange', $(this).val());
                     })
         },
         _domEvent: function () {
@@ -70,12 +71,16 @@
             //先解除所有事件接口
             this.target.off('onClick');
             this.target.off('onInitComplete');
+            this.target.off('onAChange');
             //綁定點擊事件接口
             if (typeof (this.opt.onClick) === 'function') {
                 this.target.on('onClick', this.opt.onClick);
             }
             if (typeof (this.opt.onInitComplete) === 'function') {
                 this.target.on('onInitComplete', this.opt.onInitComplete);
+            }
+            if (typeof (this.opt.onAChange) === 'function') {
+                this.target.on('onAChange', this.opt.onAChange);
             }
         }
     };

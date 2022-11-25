@@ -31,8 +31,13 @@
     <script src="Singleton.js"></script>
     <script>                
         $(document).ready(function () {                        
-            $('#DivA').PluginA({ store: new Singleton() });
-            $('#DivB').PluginB({ store: new Singleton() });
+            let MyPluginA = $('#DivA').PluginA({ 
+                onAChange: function(e, v){
+                    MyPluginB.setBValue(v)
+                }
+            });
+
+            let MyPluginB = $('#DivB').PluginB();
         });
     </script>
 </body>

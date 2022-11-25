@@ -47,13 +47,12 @@
             var o = this;
             o.target.css(o.opt.css);
 
-            let inputB = $('<input/>')
+            let inputB = $('<input/>', { class: 'inputB'})
             o.target.append(inputB);
-
-            setInterval(function () {
-                $(inputB).val(o.opt.store.a)
-            }, 1000)
-
+        },
+        _setBValue: function (val) {
+            var o = this;
+            o.target.find('.inputB').val(val)
         },
         _domEvent: function () {
             var o = this;
@@ -79,6 +78,10 @@
         this.each(function () {
             myInstance = new myBoilerplate($(this), options);
         });
+
+        this.setBValue = function (val) {
+            return myInstance._setBValue(val);
+        };
 
         return this;
     };
