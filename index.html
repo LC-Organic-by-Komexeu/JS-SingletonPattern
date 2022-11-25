@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Blank HTML5</title>
+    <style>
+        body {
+            background-color: #EEE;
+        }
+
+        .MyDiv {
+            border: 1px solid #000;
+            margin: 20px;
+            width: 80vw;
+            height: 40vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="MyDiv" id="DivA"></div>
+    <div class="MyDiv" id="DivB"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="PluginA.js"></script>
+    <script src="PluginB.js"></script>
+    <script src="NormalClass.js"></script>
+    <script src="Singleton.js"></script>
+    <script>                
+        $(document).ready(function () {                        
+            $('#DivA').PluginA({ store: new Singleton() });
+            $('#DivB').PluginB({ store: new Singleton() });
+        });
+    </script>
+</body>
+
+</html>
