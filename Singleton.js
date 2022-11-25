@@ -5,5 +5,5 @@ var Singleton = (function () {
         this.pro1 = 'public'
         this.a = ''
         cache = this;
-    }
+    }    
 }())
